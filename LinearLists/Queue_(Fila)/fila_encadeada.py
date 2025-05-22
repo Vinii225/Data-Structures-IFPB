@@ -1,84 +1,53 @@
 class No:
-    def __init__(self, dado, proximo=None):
-        self.__dado = dado
-        self.__proximo = proximo
-
-    def getDado(self):
-        return self.__dado
-
-    def setDado(self, dado):
-        self.__dado = dado
-
-    def getProximo(self):
-        return self.__proximo
-
-    def setProximo(self, proximo):
-        self.__proximo = proximo
-
-    def __str__(self):
-        return f"{self.__dado}"
+    def __init__(self, dado):
+        self.dado = dado
+        self.proximo = None
 
 class FilaEncadeada:
     def __init__(self):
         self.__inicio = None
         self.__fim = None
 
-    def estaVazia(self):
+    def Vazia(self):
         return self.__inicio is None
 
     def enfileirar(self, item):
         novo_no = No(item)
-        if self.estaVazia():
+        if self.Vazia():
             self.__inicio = novo_no
             self.__fim = novo_no
         else:
-            self.__fim.setProximo(novo_no)
+            self.__fim.proximo = novo_no
             self.__fim = novo_no
 
     def desenfileirar(self):
-        if self.estaVazia():
+        if self.Vazia():
             return None
         removido = self.__inicio
-        self.__inicio = self.__inicio.getProximo()
-        if self.__inicio is None:
+        self.__inicio = self.__inicio.proximo
+        if self.__inicio == None:
             self.__fim = None
-        return removido.getDado()
-
-    def primeiro(self):
-        if self.estaVazia():
-            return None
-        return self.__inicio.getDado()
-
-    def __len__(self):
-        contador = 0
-        atual = self.__inicio
-        while atual is not None:
-            contador += 1
-            atual = atual.getProximo()
-        return contador
+        return removido.dado
 
     def __str__(self):
-        resultado = []
-        atual = self.__inicio
-        while atual is not None:
-            resultado.append(str(atual.getDado()))
-            atual = atual.getProximo()
-        return "Fila(início -> fim): " + " -> ".join(resultado)
+        dados = ''
+        p = self.__inicio
+        while(p != None):
+            dados = dados + ' ' + str(p.dado)
+            p = p.proximo
+        return dados
 
 
 fila = FilaEncadeada()
-print("\nTeste da Fila Encadeada:")
-print("Fila vazia? ", fila.estaVazia())
+print(f"Fila vazia? {fila.Vazia()}")
+
 
 fila.enfileirar("A")
 fila.enfileirar("B")
 fila.enfileirar("C")
-print("\nApós enfileirar: ", fila)
+print(fila)
 
-print("\nPrimeiro da fila: ", fila.primeiro()) 
-print("Tamanho da fila: ", len(fila))    
 
-print("\nDesenfileirando elementos: ")
-print("Elemento removido: ", fila.desenfileirar())
-print("Elemento removido: ", fila.desenfileirar()) 
+print(f"Removido: {fila.desenfileirar()}")
+print(f"Removido: {fila.desenfileirar()}")
 print(fila)
