@@ -64,3 +64,21 @@ class FilaEncadeada:
             resultado.append(str(atual.getDado()))
             atual = atual.getProximo()
         return "Fila(início -> fim): " + " -> ".join(resultado)
+
+
+fila = FilaEncadeada()
+print("\nTeste da Fila Encadeada:")
+print("Fila vazia? ", fila.estaVazia())
+
+fila.enfileirar("A")
+fila.enfileirar("B")
+fila.enfileirar("C")
+print("\nApós enfileirar: ", fila)
+
+print("\nPrimeiro da fila: ", fila.primeiro()) 
+print("Tamanho da fila: ", len(fila))    
+
+print("\nDesenfileirando elementos: ")
+print("Elemento removido: ", fila.desenfileirar())
+print("Elemento removido: ", fila.desenfileirar()) 
+print(fila)

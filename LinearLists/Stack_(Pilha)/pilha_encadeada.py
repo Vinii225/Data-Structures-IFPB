@@ -57,3 +57,20 @@ class PilhaEncadeada:
             resultado.append(str(atual.getDado()))
             atual = atual.getProximo()
         return "Pilha(topo -> base): " + " -> ".join(resultado)
+
+pilha = PilhaEncadeada()
+print("\nTeste da Pilha Encadeada: ")
+print("Pilha vazia? ", pilha.estaVazia())
+
+pilha.empilhar(10)
+pilha.empilhar(20)
+pilha.empilhar(30)
+print("\nApós empilhar: ", pilha)
+
+print("\nTopo da pilha: ", pilha.topo())
+print("Tamanho da pilha: ", len(pilha))
+
+print("\nDesempilhando elementos: ")
+print("Elemento removido: ", pilha.desempilhar())
+print("Elemento removido: ", pilha.desempilhar())
+print(pilha)
